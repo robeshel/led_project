@@ -40,7 +40,7 @@ void setup() {
     FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
     FastLED.setBrightness(  BRIGHTNESS );
     
-    currentPalette = RainbowColors_p;
+    //currentPalette = RainbowColors_p;
     currentBlending = LINEARBLEND;
 }
 
@@ -50,7 +50,7 @@ void loop()
     ChangePalettePeriodically();
     
     static uint8_t startIndex = 0;
-    startIndex = startIndex + 1; /* motion speed */
+    startIndex = startIndex + 2; /* motion speed */
     
     FillLEDsFromPaletteColors( startIndex);
     
@@ -84,6 +84,28 @@ void ChangePalettePeriodically()
     
     if( lastSecond != secondHand) {
         lastSecond = secondHand;
+
+        /*
+        currentBlending = NOBLEND;
+
+        SetupBlackAndWhiteStripedPalette();
+        delay(5000);
+        currentPalette = RainbowStripeColors_p;
+        delay(5000);
+        SetupBlackAndWhiteStripedPalette();
+        delay(5000);
+        currentPalette = CloudColors_p;
+        delay(5000);
+        SetupTotallyRandomPalette();
+        delay(5000);
+        currentPalette = PartyColors_p;
+        delay(5000);
+        */
+        
+        if( secondHand >=  0)  { currentPalette = RainbowColors_p;         currentBlending = LINEARBLEND; }
+        //if( secondHand >=  0)  { SetupBlackAndWhiteStripedPalette();         currentBlending = NOBLEND; }
+
+        /*
         if( secondHand ==  0)  { currentPalette = RainbowColors_p;         currentBlending = LINEARBLEND; }
         if( secondHand == 10)  { currentPalette = RainbowStripeColors_p;   currentBlending = NOBLEND;  }
         if( secondHand == 15)  { currentPalette = RainbowStripeColors_p;   currentBlending = LINEARBLEND; }
@@ -95,6 +117,8 @@ void ChangePalettePeriodically()
         if( secondHand == 45)  { currentPalette = PartyColors_p;           currentBlending = LINEARBLEND; }
         if( secondHand == 50)  { currentPalette = myRedWhiteBluePalette_p; currentBlending = NOBLEND;  }
         if( secondHand == 55)  { currentPalette = myRedWhiteBluePalette_p; currentBlending = LINEARBLEND; }
+        */
+        
     }
 }
 
