@@ -50,7 +50,7 @@ void loop()
     ChangePalettePeriodically();
     
     static uint8_t startIndex = 0;
-    startIndex = startIndex + 2; /* motion speed */
+    startIndex = startIndex + 8; /* motion speed */
     
     FillLEDsFromPaletteColors( startIndex);
     
@@ -102,8 +102,9 @@ void ChangePalettePeriodically()
         delay(5000);
         */
         
-        if( secondHand >=  0)  { currentPalette = RainbowColors_p;         currentBlending = LINEARBLEND; }
-        //if( secondHand >=  0)  { SetupBlackAndWhiteStripedPalette();         currentBlending = NOBLEND; }
+        //if( secondHand >=  0)  { currentPalette = RainbowColors_p;         currentBlending = LINEARBLEND; }
+        //if( secondHand >=  0)  { SetupBlackAndWhiteStripedPalette();         currentBlending = LINEARBLEND; }
+        if( secondHand >=  0)  { currentPalette = ForestColors_p; currentBlending = LINEARBLEND; }
 
         /*
         if( secondHand ==  0)  { currentPalette = RainbowColors_p;         currentBlending = LINEARBLEND; }
